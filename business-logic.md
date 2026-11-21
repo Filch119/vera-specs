@@ -1,17 +1,17 @@
-# Business Logic v1.1 (Proposed)
+# Business Logic
 
 > Specification for a Web and Android mastery-based study and practice app using
-> React (TypeScript), Capacitor, and Supabase (PostgreSQL) for DOST-SEI JLSS
-> examinees in the Philippines.
+> React (TypeScript), Capacitor, and Supabase (PostgreSQL) for DOST undergraduate
+> scholarship and JLSS examinees in the Philippines.
 
-- **Status:** Proposed (v1.1)
-- **Allowed Platforms:** Web (PWA/Responsive), Android (Capacitor)
-- **Target Audience:** Incoming 3rd-year Filipino undergraduate STEM students and incoming undergraduate students
-  reviewing for the DOST Undergraduate/JLSS Exam.
+- Status: Proposed (v1.1)
+- Allowed Platforms: Web (PWA/Responsive), Android (Capacitor)
+- Target Audience: Incoming 3rd-year Filipino undergraduate STEM students and
+  incoming undergraduate students reviewing for the DOST Undergraduate/JLSS Exam.
 
 ---
 
-## 1. Project Details & Strategic Positioning
+## Project Details
 
 - **Company / Team Name:** `Verifai`
 - **Project Code Name:** `Vera`
@@ -44,80 +44,7 @@
 
 ---
 
-## 2. Competitive Positioning & MVP Gap Analysis (v1.0 vs v1.1)
-
-To ensure a rapid time-to-market while delivering maximum utility, v1.1 addresses
-critical gaps identified in the v1.0 baseline:
-
-| Dimension | v1.0 Baseline | v1.1 Proposed Refinement | Why It Matters for Launch |
-|---|---|---|---|
-| **Scholarship Track Awareness** | Generic onboarding (date & hours only). | Captures Target Track (RA 7687, Merit, RA 10612) and College Major during onboarding. | Calibrates baseline diagnostics (e.g., Engineering students need biology focus; Bio students need calculus/physics focus). |
-| **DOST Exam Constraints** | General multiple-choice practice. | **Strict "No Calculator Policy" enforcement** on all Math & Physics items; focus on estimation, mental math, and conceptual derivations. | Prevents drafting questions that are impossible to solve under actual exam constraints. |
-| **Content Bottleneck & Curated Scope** | 115 subtopics (~2,300 questions needed before launch). | **Curated MVP Core of 48 High-Yield Subtopics (~1,000–1,200 questions)**; remaining subtopics slated for Phase 2 content drops. | **Slashes reviewer bottleneck by 50%**, enabling immediate product launch ahead of the exam cycle. |
-| **Mastery Calculation Rules** | Abstract level labels without deterministic logic. | **Explicit, deterministic scoring thresholds** (Attempts, Accuracy % on rolling 10, Quiz score, and Spaced-Repetition verification). | Developers can implement cleanly without guessing or creating inconsistent client/server scoring logic. |
-| **Diagnostic Quiz Friction** | Optional full subject diagnostic (risking drop-off). | **15-minute Rapid Diagnostic (20 items: 5 per domain)** or 1-tap "Self-Reported Baseline" skip. | Minimizes onboarding friction so students reach the value loop in <2 minutes. |
-| **Offline Sync Conflict Model** | Unspecified sync queue logic. | **Append-only attempt log with idempotent server-side mastery/streak recalculation.** | Eliminates complex 2-way merge conflicts across offline phone and desktop web. |
-| **AI Validation Guardrails** | General mention of automated checks. | **8 concrete deterministic pre-review validation rules** (syntax, LaTeX/MathJax sanity, 4 choices, 1 key, distractor rationales, solver verification, and similarity hash). | Protects reviewers from wasting time on broken formatting or hallucinated math keys. |
-
----
-
-## 3. DOST-SEI JLSS Exam Blueprint & Domain Coverage
-
-The JLSS examination evaluates candidates across four primary domains. All questions
-follow the single-response multiple-choice format (Options A, B, C, D) with no
-negative marking.
-
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                   DOST-SEI JLSS 4 CORE DOMAINS                         │
-├────────────────────┬────────────────────┬──────────────────────────────┤
-│ Domain             │ Weight / Questions │ Key Subject Areas Covered    │
-├────────────────────┼────────────────────┼──────────────────────────────┤
-│ 1. Logical         │ ~25% (40-50 items) │ Abstract Reasoning, Spatial, │
-│    Reasoning       │                    │ Mechanical, Data Sufficiency │
-├────────────────────┼────────────────────┼──────────────────────────────┤
-│ 2. English         │ ~20% (30-40 items) │ Word Association, Analogy,   │
-│                    │                    │ Grammar, Reading Compreh.    │
-├────────────────────┼────────────────────┼──────────────────────────────┤
-│ 3. Science         │ ~30% (50-60 items) │ Biology, General Chemistry,  │
-│                    │                    │ Physics, Earth/Space Science │
-├────────────────────┼────────────────────┼──────────────────────────────┤
-│ 4. Mathematics     │ ~25% (40-50 items) │ Algebra, Geometry & Trig,    │
-│                    │                    │ Statistics, Basic Calculus   │
-└────────────────────┴────────────────────┴──────────────────────────────┘
-```
-
-### MVP High-Yield Subtopic Strategy (48 Core Subtopics)
-
-Rather than delaying launch to populate all 115 theoretical subtopics, the MVP
-prioritizes the **12 highest-frequency subtopics per domain**:
-
-1. **Logical Reasoning (12):** Figure Series, Figure Matrix, Pattern Completion,
-   Paper Folding/Spatial, Mechanical Reasoning (Pulleys/Gears), Verbal Classification,
-   Number Series, Syllogisms, Logical Deduction, Data Sufficiency, Coding-Decoding,
-   Direction Sense.
-2. **English (12):** Vocabulary in Context, Analogies & Associations, Error
-   Identification, Sentence Completion, Subject-Verb Agreement, Idiomatic Phrases,
-   Pronoun-Antecedent Agreement, Parallel Structure, Paragraph Organization,
-   Main Idea & Inference, Tone/Author's Purpose, Critical Reading.
-3. **Science (12):**
-   - *Biology:* Cell Biology & Mitosis/Meiosis, Genetics & Mendelian Inheritance,
-     Ecology & Ecosystems, Human Organ Systems & Homeostasis.
-   - *Chemistry:* Periodic Trends & Bonding, Chemical Reactions & Stoichiometry,
-     Solutions & Concentrations (Molarity/Molality), Acids, Bases & pH.
-   - *Physics:* Mechanics (Kinematics, Newton's Laws, Work & Energy),
-     Thermodynamics & Heat Transfer, Basic Electricity & Magnetism.
-   - *Earth Science:* Earth Systems (Plate Tectonics, Rock Cycle & Minerals).
-4. **Mathematics (12):** Linear & Quadratic Equations, Polynomial Operations,
-   System of Equations, Ratios, Proportions & Percentages, Exponents & Logarithms,
-   Plane Geometry (Angles, Triangles, Circles), Trigonometric Identities & Right
-   Triangles, Coordinate Geometry & Conics, Permutations & Combinations,
-   Basic Probability, Descriptive Statistics (Mean, Median, Mode, Variance),
-   Limits & Derivatives Fundamentals.
-
----
-
-## 4. User Levels & Permissions
+## User Levels
 
 | User Level | Identifier | Role & Functional Scope |
 |---|---|---|
@@ -129,9 +56,8 @@ prioritizes the **12 highest-frequency subtopics per domain**:
 
 ---
 
-## 5. System Requirements (Functional Specification)
+## System Requirements
 
-### 5.1 Onboarding & Authentication
 1. **Google Sign-In:** The system shall authenticate examinees using Google OAuth
    2.0 via Supabase Auth, storing minimal profile info (email, display name).
 2. **Contextual Onboarding:** The app shall prompt new students to select:
@@ -144,7 +70,6 @@ prioritizes the **12 highest-frequency subtopics per domain**:
    (5 items per domain) or allow immediate 1-tap self-assessment (Low, Moderate,
    Strong per domain) to seed the initial mastery state without friction.
 
-### 5.2 Adaptive Phase Planning & Study Calendar
 4. **Automated Phase Generation:** Based on the days remaining before the exam date,
    the system shall allocate the student's study timeline across 4 phases:
    - **Phase 1: Orientation & Diagnostic** (Week 1 / Days 1–7)
@@ -164,7 +89,6 @@ prioritizes the **12 highest-frequency subtopics per domain**:
    - *Burnout Mode:* One-tap schedule reduction to "Maintenance Mode" (Light only
      for 3 days) with empathetic guidance.
 
-### 5.3 Topic Practice, Mastery Engine & Spaced Review
 7. **DOST Practice Engine:** Students can open any subtopic and solve multiple-choice
    questions (A–D). Every item features:
    - Optional 2-level progressive hints (Level 1: Formula/Concept hint; Level 2:
@@ -195,7 +119,6 @@ prioritizes the **12 highest-frequency subtopics per domain**:
 11. **Subtopic Quizzes:** Standardized 10-item quizzes per subtopic under mild time
     pressure (15 minutes). Passing mark is strictly 8/10.
 
-### 5.4 Focus Timer & Habit Motivation
 12. **Pomodoro Focus Timer:** Integrated timer with standard presets:
     - `25 / 5` (Standard), `50 / 10` (Deep Work), `90 / 20` (Ultradian), `15 / 5`
       (Quick Burst).
@@ -212,7 +135,6 @@ prioritizes the **12 highest-frequency subtopics per domain**:
     Whiz" for 5 Mastered Math topics, "Century Club" for 100 questions completed,
     "Calculators Forbidden" for 50 mental math problems solved).
 
-### 5.5 Timed Mock Exams & Diagnostic Analytics
 15. **Standardized Mock Exam Simulation:**
     - **Full Mock Exam:** 160 items, timed at 2 hours and 30 minutes, structured
       identically to the DOST JLSS proportion: 40 Logical Reasoning, 30 English,
@@ -228,7 +150,6 @@ prioritizes the **12 highest-frequency subtopics per domain**:
       - *Time Out / Unanswered:* Questions skipped due to pace.
     - 1-tap addition of all incorrect mock items into the Spaced Review Queue.
 
-### 5.6 Question Curation & AI Generation Pipeline
 17. **Admin Batch Generation Pipeline:** Administrators can request AI generation
     batches specifying domain, subtopic, difficulty (Easy, Medium, Hard), and count.
     - All outputs are inserted as `DRAFT` status with complete provenance metadata
@@ -254,7 +175,6 @@ prioritizes the **12 highest-frequency subtopics per domain**:
     - An item that receives **3 independent reports** is automatically quarantined
       (hidden from public practice) and returned to the top of the Reviewer Queue.
 
-### 5.7 Offline-First Architecture & Data Portability
 21. **Offline Practice Packs:** Students can download high-yield subtopic bundles
     (JSON text + lightweight vector diagrams, < 2 MB per subject) for complete
     offline practice on Android and Web.
@@ -273,7 +193,7 @@ prioritizes the **12 highest-frequency subtopics per domain**:
 
 ---
 
-## 6. Required Solution Layers
+## Required Solution Layers
 
 1. **Security & Privacy Layer (RA 10173):**
    - Supabase Row-Level Security (RLS) enforcing strict tenant isolation.
@@ -304,7 +224,7 @@ prioritizes the **12 highest-frequency subtopics per domain**:
 
 ---
 
-## 7. MVP Features and Access Matrix
+## MVP Features and Access
 
 | Feature Module | Scope Details | User Levels |
 |---|---|---|
@@ -326,7 +246,82 @@ prioritizes the **12 highest-frequency subtopics per domain**:
 
 ---
 
-## 8. Explicit Out-of-Scope Boundaries (Protecting Time-to-Market)
+## Notes
+
+### Competitive Positioning and MVP Gap Analysis
+
+To ensure a rapid time-to-market while delivering maximum utility, v1.1 addresses
+critical gaps identified in the v1.0 baseline:
+
+| Dimension | v1.0 Baseline | v1.1 Proposed Refinement | Why It Matters for Launch |
+|---|---|---|---|
+| **Scholarship Track Awareness** | Generic onboarding (date & hours only). | Captures Target Track (RA 7687, Merit, RA 10612) and College Major during onboarding. | Calibrates baseline diagnostics (e.g., Engineering students need biology focus; Bio students need calculus/physics focus). |
+| **DOST Exam Constraints** | General multiple-choice practice. | **Strict "No Calculator Policy" enforcement** on all Math & Physics items; focus on estimation, mental math, and conceptual derivations. | Prevents drafting questions that are impossible to solve under actual exam constraints. |
+| **Content Bottleneck & Curated Scope** | 115 subtopics (~2,300 questions needed before launch). | **Curated MVP Core of 48 High-Yield Subtopics (~1,000–1,200 questions)**; remaining subtopics slated for Phase 2 content drops. | **Slashes reviewer bottleneck by 50%**, enabling immediate product launch ahead of the exam cycle. |
+| **Mastery Calculation Rules** | Abstract level labels without deterministic logic. | **Explicit, deterministic scoring thresholds** (Attempts, Accuracy % on rolling 10, Quiz score, and Spaced-Repetition verification). | Developers can implement cleanly without guessing or creating inconsistent client/server scoring logic. |
+| **Diagnostic Quiz Friction** | Optional full subject diagnostic (risking drop-off). | **15-minute Rapid Diagnostic (20 items: 5 per domain)** or 1-tap "Self-Reported Baseline" skip. | Minimizes onboarding friction so students reach the value loop in <2 minutes. |
+| **Offline Sync Conflict Model** | Unspecified sync queue logic. | **Append-only attempt log with idempotent server-side mastery/streak recalculation.** | Eliminates complex 2-way merge conflicts across offline phone and desktop web. |
+| **AI Validation Guardrails** | General mention of automated checks. | **8 concrete deterministic pre-review validation rules** (syntax, LaTeX/MathJax sanity, 4 choices, 1 key, distractor rationales, solver verification, and similarity hash). | Protects reviewers from wasting time on broken formatting or hallucinated math keys. |
+
+---
+
+### DOST Exam Blueprint and Domain Coverage
+
+The JLSS examination evaluates candidates across four primary domains. All questions
+follow the single-response multiple-choice format (Options A, B, C, D) with no
+negative marking.
+
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                   DOST-SEI JLSS 4 CORE DOMAINS                         │
+├────────────────────┬────────────────────┬──────────────────────────────┤
+│ Domain             │ Weight / Questions │ Key Subject Areas Covered    │
+├────────────────────┼────────────────────┼──────────────────────────────┤
+│ 1. Logical         │ ~25% (40-50 items) │ Abstract Reasoning, Spatial, │
+│    Reasoning       │                    │ Mechanical, Data Sufficiency │
+├────────────────────┼────────────────────┼──────────────────────────────┤
+│ 2. English         │ ~20% (30-40 items) │ Word Association, Analogy,   │
+│                    │                    │ Grammar, Reading Compreh.    │
+├────────────────────┼────────────────────┼──────────────────────────────┤
+│ 3. Science         │ ~30% (50-60 items) │ Biology, General Chemistry,  │
+│                    │                    │ Physics, Earth/Space Science │
+├────────────────────┼────────────────────┼──────────────────────────────┤
+│ 4. Mathematics     │ ~25% (40-50 items) │ Algebra, Geometry & Trig,    │
+│                    │                    │ Statistics, Basic Calculus   │
+└────────────────────┴────────────────────┴──────────────────────────────┘
+```
+
+#### MVP High-Yield Subtopic Strategy (48 Core Subtopics)
+
+Rather than delaying launch to populate all 115 theoretical subtopics, the MVP
+prioritizes the **12 highest-frequency subtopics per domain**:
+
+1. **Logical Reasoning (12):** Figure Series, Figure Matrix, Pattern Completion,
+   Paper Folding/Spatial, Mechanical Reasoning (Pulleys/Gears), Verbal Classification,
+   Number Series, Syllogisms, Logical Deduction, Data Sufficiency, Coding-Decoding,
+   Direction Sense.
+2. **English (12):** Vocabulary in Context, Analogies & Associations, Error
+   Identification, Sentence Completion, Subject-Verb Agreement, Idiomatic Phrases,
+   Pronoun-Antecedent Agreement, Parallel Structure, Paragraph Organization,
+   Main Idea & Inference, Tone/Author's Purpose, Critical Reading.
+3. **Science (12):**
+   - *Biology:* Cell Biology & Mitosis/Meiosis, Genetics & Mendelian Inheritance,
+     Ecology & Ecosystems, Human Organ Systems & Homeostasis.
+   - *Chemistry:* Periodic Trends & Bonding, Chemical Reactions & Stoichiometry,
+     Solutions & Concentrations (Molarity/Molality), Acids, Bases & pH.
+   - *Physics:* Mechanics (Kinematics, Newton's Laws, Work & Energy),
+     Thermodynamics & Heat Transfer, Basic Electricity & Magnetism.
+   - *Earth Science:* Earth Systems (Plate Tectonics, Rock Cycle & Minerals).
+4. **Mathematics (12):** Linear & Quadratic Equations, Polynomial Operations,
+   System of Equations, Ratios, Proportions & Percentages, Exponents & Logarithms,
+   Plane Geometry (Angles, Triangles, Circles), Trigonometric Identities & Right
+   Triangles, Coordinate Geometry & Conics, Permutations & Combinations,
+   Basic Probability, Descriptive Statistics (Mean, Median, Mode, Variance),
+   Limits & Derivatives Fundamentals.
+
+---
+
+### Explicit Out-of-Scope Boundaries
 
 To guarantee that the engineering team ships a rock-solid, production-ready MVP on
 schedule, the following capabilities are **explicitly excluded from v1.1**:
@@ -348,7 +343,7 @@ schedule, the following capabilities are **explicitly excluded from v1.1**:
 
 ---
 
-## 9. Implementation Notes & Operational Recommendations
+### Implementation Notes and Operational Recommendations
 
 - **Review Capacity Calculation:** 48 core subtopics × 25 questions = **1,200
   questions**. With 3 dedicated reviewers (Math, Science, English/Logic), each
