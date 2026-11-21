@@ -40,8 +40,8 @@ wrong architecture.*
 
 | # | Section | What to sync |
 |---|---|---|
-| 1 | `business-logic-v1.1-proposed.md` §User Levels & Permissions | User level definitions (A–E) |
-| 2 | `business-logic-v1.1-proposed.md` §MVP Features and Access Matrix | Access column references |
+| 1 | `business-logic.md` §User Levels & Permissions | User level definitions (A–E) |
+| 2 | `business-logic.md` §MVP Features and Access Matrix | Access column references |
 
 **Trigger:** adding, removing, or renaming a user level.
 *Miss → access matrix references a user level that doesn't exist; authorization is undefined.*
@@ -62,7 +62,7 @@ wrong architecture.*
 | Dependency | Why it's hidden | Impact |
 |---|---|---|
 | `vera-ecosystem/AGENTS.md` references glob patterns `*-api/AGENTS.md`, etc. | Adding or renaming a repo silently breaks the glob. | Agents miss the new repo's instructions entirely. |
-| `business-logic-v1.1-proposed.md` is a proposal, not an approved baseline | The proposed scope can be mistaken for an implementation commitment. | Downstream specs and code may implement unapproved requirements. |
+| `business-logic.md` is a proposal, not an approved baseline | The proposed scope can be mistaken for an implementation commitment. | Downstream specs and code may implement unapproved requirements. |
 
 ## High-Risk Areas
 

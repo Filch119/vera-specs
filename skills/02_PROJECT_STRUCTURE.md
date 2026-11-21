@@ -17,8 +17,7 @@ vera-ecosystem/                  ← umbrella directory (not a git repo itself)
 │   └── AGENTS.md
 ├── vera-specs/                  ← specifications (git repo)
 │   ├── AGENTS.md
-│   ├── business-logic-v1.0.md   ← superseded requirements baseline
-│   ├── business-logic-v1.1-proposed.md ← proposed updated requirements
+│   ├── business-logic.md        ← current proposed requirements
 │   ├── git-guidelines.md        ← commit and versioning conventions
 │   ├── sense-making.md          ← environmental scanning prompt
 │   └── skills/                  ← this folder: operational knowledge

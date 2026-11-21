@@ -15,8 +15,8 @@ gateway between both clients (web and Android) and the Supabase database (see 01
 | Aspect | Source |
 |---|---|
 | Role | `vera-api/AGENTS.md`: "back-end web application that communicates between the Supabase database API and the web/Android clients" |
-| Auth | Google Sign-In (`business-logic-v1.1-proposed.md` §5.1) |
-| Access levels | 5 user levels with graduated feature access (`business-logic-v1.1-proposed.md` §7) |
+| Auth | Google Sign-In (`business-logic.md` §5.1) |
+| Access levels | 5 user levels with graduated feature access (`business-logic.md` §7) |
 
 ## Decisions to Make Before First Endpoint
 

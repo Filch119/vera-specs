@@ -35,7 +35,7 @@ Until then, the following ecosystem-level conventions apply:
 | Element | Convention | Example |
 |---|---|---|
 | Repository names | `vera-<component>` | `vera-api`, `vera-web` |
-| Specification files | Descriptive kebab-case with version | `business-logic-v1.1-proposed.md` |
+| Specification files | Descriptive kebab-case; one canonical business-logic file | `business-logic.md` |
 | Skill documents | `NN_TOPIC.md`, uppercase topic | `01_ARCHITECTURE.md` |
 | Git tag prefixes | Product letter + short code | `WCN.01.0.001` |
 | Branch names | `main`, `beta`, `release` | Fixed set per git-guidelines |

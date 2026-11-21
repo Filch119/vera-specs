@@ -22,7 +22,7 @@ they disagree, the spec is updated or the code is filed as a defect.
 | Back-end API | `vera-api` | All server-side logic, Supabase integration, authentication relay, data validation, and API contracts. |
 | Web Front-end | `vera-web` | Browser-based regulatory compliance UI, routing, client-side validation, and presentation. |
 | Android App | `vera-android` | Native Android regulatory compliance UI, offline behavior, and mobile-specific features. |
-| Specifications | `vera-specs` | Requirements (`business-logic-v1.1-proposed.md`), conventions (`git-guidelines.md`), research prompts (`sense-making.md`), and this skills folder. |
+| Specifications | `vera-specs` | Requirements (`business-logic.md`), conventions (`git-guidelines.md`), research prompts (`sense-making.md`), and this skills folder. |
 
 ## Data Flow (End to End)
 
@@ -61,7 +61,7 @@ available but must be coordinated with API-layer auth.
 
 ### Decision: Google Sign-In as the sole auth provider (2026, team)
 **Status:** accepted
-**Context:** Business logic v1.1 proposes Google Sign-In (requirement 1).
+**Context:** `business-logic.md` proposes Google Sign-In (requirement 1).
 **Choice:** Google Sign-In integration, likely via Supabase Auth.
 **Alternatives:** Email/password, magic link, multi-provider.
 **Consequences:** Users without Google accounts cannot authenticate. Simplifies the auth surface
@@ -81,5 +81,5 @@ prefixes (`WCN`, `BCN`, `ACN`, `SCN`) to disambiguate.
 | # | Debt | Severity | Notes |
 |---|---|---|---|
 | 1 | No application code exists yet — all repos are scaffolding only. | Low | Expected at greenfield. No technical debt, only missing implementation. |
-| 2 | Business logic v1.1 is still proposed and needs stakeholder approval. | Medium | Implementation may diverge if the proposal is treated as an approved baseline before review. |
+| 2 | `business-logic.md` is still proposed and needs stakeholder approval. | Medium | Implementation may diverge if the proposal is treated as an approved baseline before review. |
 | 3 | AGENTS.md files are minimal one-liners. | Low | Sufficient for now; expand as codebases grow. |

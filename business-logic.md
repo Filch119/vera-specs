@@ -4,7 +4,7 @@
 > React (TypeScript), Capacitor, and Supabase (PostgreSQL) for DOST-SEI JLSS
 > examinees in the Philippines.
 
-- **Status:** Proposed (Evolution of `business-logic-v1.0.md`)
+- **Status:** Proposed (v1.1)
 - **Allowed Platforms:** Web (PWA/Responsive), Android (Capacitor)
 - **Target Audience:** Incoming 3rd-year Filipino undergraduate STEM students and incoming undergraduate students
   reviewing for the DOST Undergraduate/JLSS Exam.

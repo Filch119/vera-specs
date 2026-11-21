@@ -10,14 +10,14 @@ and change checklist. Read before any auth, access control, or data-handling cha
 | Threat | Attack surface | Mitigation (planned or in place) |
 |---|---|---|
 | Unauthorized data access | API endpoints, Supabase direct access | API-layer auth enforcement; Supabase RLS as defense-in-depth (see 07). Clients must not access DB directly (see 01). |
-| Privilege escalation | User level checks (A–E) | Role-based access per feature matrix (`business-logic-v1.1-proposed.md` §7). |
+| Privilege escalation | User level checks (A–E) | Role-based access per feature matrix (`business-logic.md` §7). |
 | Data exfiltration / privacy violation | All data endpoints | Data Privacy Act compliance: retention limits, no per-user trails, aggregation thresholds, consent for resale (see 07). |
 | Token theft / session hijacking | Google Sign-In tokens, session cookies | HTTPS only; token validation on every request; short-lived tokens with refresh. |
 | Injection (SQL, XSS, etc.) | API inputs, web front-end rendering | Server-side input validation (parameterized queries via Supabase client); client-side output encoding. |
 
 ## Authentication
 
-- **Provider:** Google Sign-In (sole provider per `business-logic-v1.1-proposed.md` §5.1).
+- **Provider:** Google Sign-In (sole provider per `business-logic.md` §5.1).
 - **Mechanism:** Supabase Auth with Google OAuth (suspected — to be confirmed when implemented).
 - **Flow:** Client obtains Google token → sends to API → API validates via Supabase Auth → returns session token.
 
@@ -59,5 +59,5 @@ Before merging any change that touches auth, access control, or data handling:
 - [ ] Are user levels checked server-side, not just client-side?
 - [ ] Are all inputs validated and parameterized?
 - [ ] Are secrets referenced by variable name only (no values in code or docs)?
-- [ ] Does it comply with the Data Privacy Act requirements in `business-logic-v1.1-proposed.md` §5.7 and §6?
+- [ ] Does it comply with the Data Privacy Act requirements in `business-logic.md` §5.7 and §6?
 - [ ] Has the lockstep set for auth changes been reviewed (see 04)?
