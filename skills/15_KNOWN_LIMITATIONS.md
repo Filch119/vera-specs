@@ -14,13 +14,12 @@ what the system cannot do and where it might break.
 **Status:** expected at greenfield.
 **When it changes:** when the first feature branch is merged to `main` in any code repo.
 
-### 2. Business logic template has placeholder values
+### 2. Business logic v1.1 is still proposed
 
-**Impact:** medium — `<Code Name>`, `<Team Name>`, feature descriptions, and system requirements
-are all unfilled in `business-logic-v1.0.md`.
-**Risk:** development begins against placeholder specs, leading to code that implements nothing
-concrete.
-**Mitigation:** fill in the template before writing the first line of application code.
+**Impact:** medium — the detailed requirements in `business-logic-v1.1-proposed.md` have not yet
+been approved as the implementation baseline.
+**Risk:** development begins against unapproved scope, leading to rework.
+**Mitigation:** review and approve the proposal before implementation begins.
 
 ### 3. Single auth provider (Google Sign-In only)
 
@@ -50,8 +49,7 @@ checks to enforce. Without CI, the gates rely entirely on manual discipline.
 
 ## Deferred Features
 
-*None explicitly deferred — the MVP feature list in `business-logic-v1.0.md` has not yet been
-prioritized beyond the access matrix.*
+*See the explicit out-of-scope boundaries in `business-logic-v1.1-proposed.md` §8.*
 
 ## Architectural Constraints
 

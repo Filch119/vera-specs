@@ -6,16 +6,16 @@
 
 - **Status:** Proposed (Evolution of `business-logic-v1.0.md`)
 - **Allowed Platforms:** Web (PWA/Responsive), Android (Capacitor)
-- **Target Audience:** Incoming 3rd-year Filipino undergraduate STEM students
-  reviewing for the DOST-SEI Junior Level Science Scholarship (JLSS).
+- **Target Audience:** Incoming 3rd-year Filipino undergraduate STEM students and incoming undergraduate students
+  reviewing for the DOST Undergraduate/JLSS Exam.
 
 ---
 
 ## 1. Project Details & Strategic Positioning
 
 - **Company / Team Name:** `Verifai`
-- **Project Code Name:** `Vera` (JLSS Study Hub)
-- **Project Short Code:** `VE` (Tag prefixes: `WVE`, `BVE`, `AVE`, `SVE`)
+- **Project Code Name:** `Vera`
+- **Project Short Code:** `VE`
 - **Product Vision:** The "Khan Academy of DOST-SEI JLSS" — combining
   deliberate practice, diagnostic phase planning, focus tracking, and transparent
   mastery metrics into an offline-first companion that turns overwhelmed examinees
@@ -105,9 +105,9 @@ prioritizes the **12 highest-frequency subtopics per domain**:
      Ecology & Ecosystems, Human Organ Systems & Homeostasis.
    - *Chemistry:* Periodic Trends & Bonding, Chemical Reactions & Stoichiometry,
      Solutions & Concentrations (Molarity/Molality), Acids, Bases & pH.
-   - *Physics:* Kinematics & Newton's Laws, Work, Energy & Power, Thermodynamics &
-     Heat Transfer, Basic Electricity & Magnetism.
-   - *Earth Science:* Plate Tectonics, Rock Cycle & Minerals.
+   - *Physics:* Mechanics (Kinematics, Newton's Laws, Work & Energy),
+     Thermodynamics & Heat Transfer, Basic Electricity & Magnetism.
+   - *Earth Science:* Earth Systems (Plate Tectonics, Rock Cycle & Minerals).
 4. **Mathematics (12):** Linear & Quadratic Equations, Polynomial Operations,
    System of Equations, Ratios, Proportions & Percentages, Exponents & Logarithms,
    Plane Geometry (Angles, Triangles, Circles), Trigonometric Identities & Right

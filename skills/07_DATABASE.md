@@ -15,9 +15,9 @@ row-level security policies have been created yet.
 | Aspect | Source | Detail |
 |---|---|---|
 | Platform | Architecture decision (01) | Supabase (PostgreSQL). |
-| Auth integration | `business-logic-v1.0.md` #1 | Google Sign-In via Supabase Auth. |
-| User levels | `business-logic-v1.0.md` §User Levels | Five levels: System Administrator, Administrator, Moderator, Contributor, Guest. |
-| Privacy | `business-logic-v1.0.md` §Required Solution Layers | Data Privacy Act compliance, location protection, retention limits, no per-user trails, aggregation thresholds, consent for data resale. |
+| Auth integration | `business-logic-v1.1-proposed.md` §5.1 | Google Sign-In via Supabase Auth. |
+| User levels | `business-logic-v1.1-proposed.md` §4 | Five levels: System Administrator, Administrator, Content Reviewer, Student, Guest. |
+| Privacy | `business-logic-v1.1-proposed.md` §5.7, §6 | Data Privacy Act compliance, minimal student data access, cohort aggregation threshold, export and deletion rights. |
 | Soft deletes | `git-guidelines.md` scope examples | The spec scope `vera-specs/schema: Clarify soft-delete columns` implies soft-delete is planned. |
 
 ## Decisions to Make Before First Migration

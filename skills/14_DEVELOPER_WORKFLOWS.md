@@ -31,7 +31,7 @@ Get-ChildItem -Directory
 1. `vera-ecosystem/AGENTS.md` — points to per-repo instructions.
 2. `vera-specs/git-guidelines.md` — commit and versioning conventions.
 3. `vera-specs/skills/00_INDEX.md` — reading order for skills documents.
-4. `vera-specs/business-logic-v1.0.md` — requirements template.
+4. `vera-specs/business-logic-v1.1-proposed.md` — proposed product requirements; confirm approval status before implementation.
 
 ## Common Tasks
 

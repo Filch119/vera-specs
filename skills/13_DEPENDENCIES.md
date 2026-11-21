@@ -23,7 +23,7 @@ rejections. Read before adding or upgrading a dependency.
 | Dependency | Reason | Repository | Notes |
 |---|---|---|---|
 | Supabase | Managed PostgreSQL + Auth + real-time | `vera-api` (primary), clients (SDK) | Architecture decision (see 01). |
-| Google Sign-In | Sole auth provider per business-logic-v1.0.md #1 | All (via Supabase Auth) | — |
+| Google Sign-In | Sole auth provider per `business-logic-v1.1-proposed.md` §5.1 | All (via Supabase Auth) | — |
 
 ### vera-api
 
