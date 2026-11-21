@@ -40,8 +40,8 @@ wrong architecture.*
 
 | # | Section | What to sync |
 |---|---|---|
-| 1 | `business-logic.md` §User Levels & Permissions | User level definitions (A–E) |
-| 2 | `business-logic.md` §MVP Features and Access Matrix | Access column references |
+| 1 | `business-logic.md` §User Levels | User level definitions (A–E) |
+| 2 | `business-logic.md` §MVP Features and Access | Access column references |
 
 **Trigger:** adding, removing, or renaming a user level.
 *Miss → access matrix references a user level that doesn't exist; authorization is undefined.*

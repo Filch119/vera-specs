@@ -346,3 +346,33 @@ CREATE INDEX IF NOT EXISTS idx_note_workspace ON note (workspace_uuid);
   **fresh installs and upgrades alike**, and test the upgrade path with real data.
 - **When a new change column is added, backfill it from `created_at`,** so existing rows read as
   clean instead of being pushed all over again.
+
+### Versioned schema files
+
+The canonical initial full schema is `db-schema/v1.0.0.sql`. Keep forward migrations and exported
+full snapshots in the same directory, and never reuse or overwrite a released schema version.
+
+- **Forward migrations** increment the patch component: `v1.0.0.sql` → `v1.0.1.sql` →
+  `v1.0.2.sql`. Add one when a developer or AI agent adds or alters tables or columns. A forward
+  migration contains only the idempotent changes needed to move the existing database forward.
+- **Full SQL snapshots** increment the minor component: `v1.0.0.sql` → `v1.1.0.sql` →
+  `v1.2.0.sql`. Create one when a developer exports the current schema from Supabase to the local
+  repository. A snapshot describes the complete schema at that point in time.
+- Both forms must be safe to apply repeatedly. Use `CREATE ... IF NOT EXISTS`, conflict-safe seed
+  statements, and explicit policy/trigger replacement where appropriate. Do not treat an exported
+  snapshot as a replacement for unapplied forward migrations; record and apply the migration path
+  before making the next snapshot.
+- Every table's `id` remains a server-only identity/primary-key index. Never include it in sync
+  payloads or use it in an application relationship; relationships use UUID columns ending in
+  `_uuid`.
+
+### API and privacy boundary
+
+The Web and Android clients use `vera-api`; they do not query application tables directly. The API
+uses the Supabase `service_role` only on the server. That role bypasses RLS, so every API request
+must derive the user UUID and access level from a verified session and enforce the same ownership,
+staff, and aggregation rules before reading or writing. Never serialize a server `id` to a client.
+Reviewers receive question-report aggregates only, and student attempt, assessment, plan, and focus
+records are never available to staff. Deleting an auth account cascades learner-owned records and
+anonymizes actor UUIDs on retained staff/content/audit rows; retention deadlines still require an
+API or scheduled database job.

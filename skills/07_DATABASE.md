@@ -7,14 +7,18 @@ dangerous operations, and indexing. Read when designing or changing data models.
 
 ## Current State
 
-The database platform is Supabase (managed PostgreSQL). No schema, tables, migrations, or
-row-level security policies have been created yet.
+The database platform is Supabase (managed PostgreSQL). The idempotent initial schema snapshot is
+`db-schema/v1.0.0.sql`. It defines the MVP tables, UUID relationships, server-only identity keys,
+seed curriculum, and RLS policies.
 
 ## What We Know from Specs
 
 | Aspect | Source | Detail |
 |---|---|---|
 | Platform | Architecture decision (01) | Supabase (PostgreSQL). |
+| Schema baseline | `db-schema/v1.0.0.sql` | Idempotent MVP schema snapshot. |
+| Identity | `db-design-choices.md` §2–3 | Server-only `id bigint`; application relationships use `*_uuid`. |
+| Offline sync | `db-design-choices.md` §5–6 | Soft-delete tombstones and idempotent append-only attempt events. |
 | Auth integration | `business-logic.md` §5.1 | Google Sign-In via Supabase Auth. |
 | User levels | `business-logic.md` §4 | Five levels: System Administrator, Administrator, Content Reviewer, Student, Guest. |
 | Privacy | `business-logic.md` §5.7, §6 | Data Privacy Act compliance, minimal student data access, cohort aggregation threshold, export and deletion rights. |
@@ -22,13 +26,13 @@ row-level security policies have been created yet.
 
 ## Decisions to Make Before First Migration
 
-1. **Identity strategy:** UUIDs vs. sequential IDs. Supabase defaults to UUID for auth users.
-   Decide whether application tables follow the same pattern.
-2. **Soft-delete convention:** column name (`deleted_at`?), indexing strategy, query defaults.
-3. **Row-level security:** whether to enforce at the Supabase level, the API level, or both.
-   *Suspect:* both — Supabase RLS as defense-in-depth, API layer as primary enforcement.
-4. **Migration tooling:** Supabase CLI migrations, raw SQL, or an ORM migration layer.
-5. **Retention limits:** what gets purged, when, and how (per Data Privacy Act requirement).
+1. **Migration tooling:** apply reviewed versioned SQL scripts; forward migrations bump the patch
+   component and exported full snapshots bump the minor component (see `db-design-choices.md`).
+2. **Retention limits:** define automated purge jobs and evidence of deletion against the
+   Data Privacy Act timelines in `business-logic.md`.
+3. **RLS rollout:** the schema defines owner and staff policies, while the API currently uses the
+   server-side service role. API authorization must enforce equivalent access boundaries because
+   the service role bypasses RLS.
 
 ## Dangerous Operations (Future)
 

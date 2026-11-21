@@ -18,6 +18,9 @@ vera-ecosystem/                  ← umbrella directory (not a git repo itself)
 ├── vera-specs/                  ← specifications (git repo)
 │   ├── AGENTS.md
 │   ├── business-logic.md        ← current proposed requirements
+│   ├── db-design-choices.md     ← offline-first database decisions
+│   ├── db-schema/               ← versioned full snapshots and forward migrations
+│   │   └── v1.0.0.sql           ← initial MVP schema snapshot
 │   ├── git-guidelines.md        ← commit and versioning conventions
 │   ├── sense-making.md          ← environmental scanning prompt
 │   └── skills/                  ← this folder: operational knowledge
@@ -57,6 +60,6 @@ vera-ecosystem/                  ← umbrella directory (not a git repo itself)
 | `vera-` prefix on repo names | All repos belong to the Vera ecosystem. |
 | `AGENTS.md` in every repo root | Machine-readable project identity (read by AI agents). |
 | `NN_TOPIC.md` in `skills/` | Numbered skill documents; never renumber, only append. |
-| `business-logic-vX.Y.md` | Versioned requirements document. |
+| `business-logic.md` | Single canonical requirements document; version history lives in Git. |
 | Product prefixes (`WCN`, `BCN`, `ACN`, `SCN`) | Release tag prefixes identifying which product a tag belongs to. |
 | `code-name-*` in git-guidelines scopes | Generic placeholder; actual scopes use `vera-*`. |
